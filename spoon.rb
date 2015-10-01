@@ -64,11 +64,14 @@ Open3.popen3("ln -sfh #{options[:data_dir]}/#{options[:client]}/.kettle #{ENV['H
 
 
 # Run spoon on OS X
+=begin
 if options[:kettle_version] < "5" then
   cmd = "open -n /opt/kettle/pdi-ce-#{options[:kettle_version]}/Data\\ Integration\\ 64-bit.app"
 else
   cmd = "open -n /opt/kettle/pdi-ce-#{options[:kettle_version]}/Data\\ Integration.app"
 end
+=end
+cmd = "cd /opt/kettle/pdi-ce-#{options[:kettle_version]}; ./spoon.sh"
 
 puts "Command: #{cmd}"
 Open3.popen3(cmd) do |stdin, stdout, stderr|
